@@ -1,12 +1,8 @@
 <%= form_with model: product, url: admin_products_path, local:true do |f| %>
-<%
-=begin %>
   <div class="form-group">
     <%= f.label :商品画像 %>
     <%= f.attachment_field :image, class: "form-control-file product_image" %>
   </div>
-<%
-=end %>
   <div class="form-group">
     <%= f.label :商品名 %>
     <%= f.text_field :name, :placeholder => "商品名", class: "form-control-file product_name" %>

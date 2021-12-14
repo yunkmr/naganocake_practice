@@ -10,17 +10,21 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(params_product)
-    @product.save
-    redirect_to product_path(@product)
+    if @product.save
+      redirect_to admin_product_path(@product)
+    else
+      render "new"
+    end
   end
 
   def show
+    @product = Product.find(params[:id])
   end
 
   private
 
   def params_product
-    params.require(:product).permit(:genre_id, :name, :description, :image, :price, :sale_status)
+    params.require(:product).permit(:id, :genre_id, :name, :description, :image, :price, :sale_status)
   end
 
 end
