@@ -21,6 +21,17 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def edit
+    @genres = Genre.all
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @product.update(params_product)
+    redirect_to admin_product_path(@product)
+  end
+
   private
 
   def params_product
